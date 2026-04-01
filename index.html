@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leonidas Meditech - Complete Marketing Plan</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#1a1a2e;
+    --bg-card:#16213e;
+    --bg-card-alt:#0f3460;
+    --gold:#c9a84c;
+    --gold-light:#e0c872;
+    --gold-dark:#a88a30;
+    --white:#f0f0f0;
+    --white-dim:#b8b8cc;
+    --green:#4ecca3;
+    --red:#e74c3c;
+    --blue:#3498db;
+    --radius:12px;
+    --shadow:0 8px 32px rgba(0,0,0,.35);
+  }
+  html{scroll-behavior:smooth;font-size:16px}
+  body{
+    background:var(--bg);
+    color:var(--white);
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--gold);color:var(--bg)}
+  a{color:var(--gold);text-decoration:none;transition:color .2s}
+  a:hover{color:var(--gold-light)}
+
+  /* ── NAV ── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    background:rgba(26,26,46,.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(201,168,76,.15);
+    padding:.75rem 2rem;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  nav .logo{font-weight:700;font-size:1.1rem;letter-spacing:1px;color:var(--gold)}
+  nav ul{list-style:none;display:flex;gap:1.5rem;flex-wrap:wrap}
+  nav ul li a{font-size:.8rem;text-transform:uppercase;letter-spacing:.5px;color:var(--white-dim);transition:color .2s}
+  nav ul li a:hover{color:var(--gold)}
+  @media(max-width:768px){nav ul{display:none}}
+
+  /* ── HERO ── */
+  .hero{
+    min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    padding:6rem 2rem 4rem;
+    background:linear-gradient(160deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);
+    position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+    background:radial-gradient(ellipse at 30% 50%,rgba(201,168,76,.06) 0%,transparent 60%);
+    animation:heroGlow 8s ease-in-out infinite alternate;
+  }
+  @keyframes heroGlow{0%{transform:translate(0,0)}100%{transform:translate(5%,3%)}}
+  .hero>*{position:relative;z-index:1}
+  .hero .badge{
+    display:inline-block;padding:.4rem 1.2rem;border:1px solid var(--gold);border-radius:50px;
+    font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:1.5rem;
+  }
+  .hero h1{font-size:clamp(2rem,5vw,3.8rem);font-weight:800;line-height:1.15;margin-bottom:1rem;max-width:900px}
+  .hero h1 span{color:var(--gold)}
+  .hero p{font-size:1.15rem;color:var(--white-dim);max-width:650px;margin-bottom:2.5rem}
+  .hero .nav-dots{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center}
+  .hero .nav-dots a{
+    padding:.5rem 1rem;border:1px solid rgba(201,168,76,.3);border-radius:50px;
+    font-size:.75rem;color:var(--white-dim);transition:all .2s;
+  }
+  .hero .nav-dots a:hover{border-color:var(--gold);color:var(--gold)}
+
+  /* ── SECTIONS ── */
+  section{padding:5rem 2rem;max-width:1200px;margin:0 auto}
+  .section-tag{
+    display:inline-block;font-size:.7rem;text-transform:uppercase;letter-spacing:3px;
+    color:var(--gold);border:1px solid rgba(201,168,76,.3);padding:.3rem .9rem;border-radius:50px;margin-bottom:1rem;
+  }
+  .section-title{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;margin-bottom:.5rem}
+  .section-sub{color:var(--white-dim);font-size:1rem;margin-bottom:3rem;max-width:700px}
+  .divider{
+    width:100%;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(201,168,76,.25),transparent);
+    margin:0 auto;
+  }
+
+  /* ── CAMPAIGN CARDS ── */
+  .campaign-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+  .campaign-card{
+    background:var(--bg-card);border:1px solid rgba(201,168,76,.12);border-radius:var(--radius);
+    padding:2rem;position:relative;overflow:hidden;transition:transform .25s,border-color .25s;
+  }
+  .campaign-card:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.35)}
+  .campaign-card .num{
+    position:absolute;top:-10px;right:15px;font-size:5rem;font-weight:900;
+    color:rgba(201,168,76,.07);line-height:1;
+  }
+  .campaign-card h3{color:var(--gold);font-size:1.2rem;margin-bottom:.5rem}
+  .campaign-card .meta{display:flex;gap:1rem;flex-wrap:wrap;margin:.75rem 0 1rem}
+  .campaign-card .meta span{
+    font-size:.75rem;padding:.3rem .7rem;border-radius:50px;
+    background:rgba(201,168,76,.1);color:var(--gold-light);
+  }
+  .campaign-card p{color:var(--white-dim);font-size:.92rem}
+
+  /* ── ACCORDION ── */
+  .campaign-group{margin-bottom:2.5rem}
+  .campaign-group-title{
+    font-size:1.1rem;font-weight:700;color:var(--gold);margin-bottom:1rem;
+    padding-bottom:.5rem;border-bottom:1px solid rgba(201,168,76,.15);
+  }
+  .accordion-item{
+    background:var(--bg-card);border:1px solid rgba(201,168,76,.1);border-radius:var(--radius);
+    margin-bottom:.75rem;overflow:hidden;transition:border-color .2s;
+  }
+  .accordion-item:hover{border-color:rgba(201,168,76,.3)}
+  .accordion-header{
+    padding:1rem 1.5rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+    font-weight:600;font-size:.95rem;transition:background .2s;user-select:none;
+  }
+  .accordion-header:hover{background:rgba(201,168,76,.05)}
+  .accordion-header .arrow{
+    transition:transform .3s;font-size:.8rem;color:var(--gold);flex-shrink:0;margin-left:1rem;
+  }
+  .accordion-item.open .accordion-header .arrow{transform:rotate(180deg)}
+  .accordion-body{
+    max-height:0;overflow:hidden;transition:max-height .4s ease;
+    padding:0 1.5rem;
+  }
+  .accordion-item.open .accordion-body{padding:0 1.5rem 1.5rem}
+  .accordion-body .ad-meta{
+    display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1rem;
+  }
+  .accordion-body .ad-meta span{
+    font-size:.7rem;padding:.25rem .6rem;border-radius:50px;
+    background:rgba(201,168,76,.1);color:var(--gold-light);text-transform:uppercase;letter-spacing:.5px;
+  }
+  .accordion-body h4{color:var(--gold);font-size:.9rem;margin:1rem 0 .4rem;text-transform:uppercase;letter-spacing:.5px}
+  .accordion-body p,.accordion-body li{color:var(--white-dim);font-size:.9rem;line-height:1.7}
+  .accordion-body ul{padding-left:1.2rem;margin:.5rem 0}
+  .accordion-body .hook{
+    background:rgba(201,168,76,.08);border-left:3px solid var(--gold);
+    padding:.6rem 1rem;border-radius:0 8px 8px 0;margin-bottom:1rem;
+    font-style:italic;color:var(--gold-light);font-size:.95rem;
+  }
+  .accordion-body .cta-line{
+    margin-top:1rem;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.05);
+    font-size:.8rem;color:var(--white-dim);
+  }
+  .accordion-body .cta-line strong{color:var(--gold)}
+
+  /* ── LANDING PAGE COPY ── */
+  .lp-section{
+    background:var(--bg-card);border:1px solid rgba(201,168,76,.1);border-radius:var(--radius);
+    padding:2rem;margin-bottom:1.5rem;
+  }
+  .lp-section h3{color:var(--gold);font-size:1.1rem;margin-bottom:.75rem}
+  .lp-section h4{color:var(--gold-light);font-size:.95rem;margin:1rem 0 .4rem}
+  .lp-section p,.lp-section li{color:var(--white-dim);font-size:.9rem}
+  .lp-section ul{padding-left:1.2rem;margin:.5rem 0}
+  .lp-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:1rem}
+  .lp-col{background:rgba(201,168,76,.04);border-radius:8px;padding:1.25rem}
+  .lp-col h5{color:var(--gold);font-size:.9rem;margin-bottom:.4rem}
+  .lp-col p{font-size:.85rem}
+
+  /* ── TIMELINE ── */
+  .timeline{position:relative;padding-left:2rem}
+  .timeline::before{
+    content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;
+    background:linear-gradient(180deg,var(--gold),rgba(201,168,76,.15));
+  }
+  .timeline-item{position:relative;margin-bottom:2rem;padding-left:1.5rem}
+  .timeline-item::before{
+    content:'';position:absolute;left:-2rem;top:6px;width:16px;height:16px;
+    border-radius:50%;background:var(--bg);border:2px solid var(--gold);z-index:1;
+  }
+  .timeline-item.sms::before{background:var(--gold)}
+  .timeline-item .day-badge{
+    font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:.25rem;
+  }
+  .timeline-item .type-badge{
+    display:inline-block;font-size:.65rem;padding:.2rem .5rem;border-radius:50px;margin-bottom:.5rem;
+    text-transform:uppercase;letter-spacing:.5px;
+  }
+  .timeline-item.sms .type-badge{background:rgba(78,204,163,.15);color:var(--green)}
+  .timeline-item.email .type-badge{background:rgba(52,152,219,.15);color:var(--blue)}
+  .timeline-item h4{font-size:.95rem;margin-bottom:.4rem}
+  .timeline-item .content{
+    background:var(--bg-card);border:1px solid rgba(201,168,76,.08);border-radius:var(--radius);
+    padding:1.25rem;font-size:.85rem;color:var(--white-dim);line-height:1.7;white-space:pre-line;
+  }
+
+  /* ── CALENDAR GRID ── */
+  .cal-week{margin-bottom:2rem}
+  .cal-week h3{font-size:1rem;color:var(--gold);margin-bottom:.75rem;font-weight:600}
+  .cal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+  .cal-card{
+    background:var(--bg-card);border:1px solid rgba(201,168,76,.1);border-radius:var(--radius);
+    padding:1.25rem;transition:border-color .2s;
+  }
+  .cal-card:hover{border-color:rgba(201,168,76,.3)}
+  .cal-card .day{font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:.3rem}
+  .cal-card .format{
+    display:inline-block;font-size:.65rem;padding:.15rem .5rem;border-radius:50px;margin-bottom:.5rem;
+    background:rgba(201,168,76,.1);color:var(--gold-light);
+  }
+  .cal-card p{font-size:.85rem;color:var(--white-dim)}
+
+  /* ── CHECKLIST ── */
+  .checklist{list-style:none;counter-reset:check}
+  .checklist li{
+    counter-increment:check;
+    background:var(--bg-card);border:1px solid rgba(201,168,76,.1);border-radius:var(--radius);
+    padding:1rem 1.25rem 1rem 3.5rem;margin-bottom:.6rem;position:relative;
+    font-size:.9rem;color:var(--white-dim);transition:border-color .2s,background .2s;
+    cursor:pointer;
+  }
+  .checklist li:hover{border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.03)}
+  .checklist li::before{
+    content:counter(check);position:absolute;left:1rem;top:50%;transform:translateY(-50%);
+    width:28px;height:28px;border-radius:50%;border:2px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-size:.75rem;font-weight:700;color:var(--gold);
+  }
+  .checklist li.checked{opacity:.55;text-decoration:line-through}
+  .checklist li.checked::before{background:var(--gold);color:var(--bg);content:'✓'}
+
+  /* ── BEFORE/AFTER ── */
+  .ba-card{
+    background:var(--bg-card);border:1px solid rgba(201,168,76,.1);border-radius:var(--radius);
+    padding:1.75rem;margin-bottom:1.25rem;
+  }
+  .ba-card h4{font-size:.9rem;color:var(--gold);margin-bottom:1rem;text-transform:uppercase;letter-spacing:.5px}
+  .ba-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  @media(max-width:600px){.ba-row{grid-template-columns:1fr}}
+  .ba-box{border-radius:8px;padding:1rem;font-size:.85rem;line-height:1.7}
+  .ba-box.before{background:rgba(231,76,60,.08);border:1px solid rgba(231,76,60,.2);color:var(--white-dim)}
+  .ba-box.after{background:rgba(78,204,163,.08);border:1px solid rgba(78,204,163,.2);color:var(--white)}
+  .ba-box .label{
+    font-size:.65rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.4rem;font-weight:700;
+  }
+  .ba-box.before .label{color:var(--red)}
+  .ba-box.after .label{color:var(--green)}
+
+  /* ── ACTION LIST ── */
+  .action-list{list-style:none;counter-reset:action}
+  .action-list li{
+    counter-increment:action;
+    background:var(--bg-card);border:1px solid rgba(201,168,76,.1);border-radius:var(--radius);
+    padding:1.15rem 1.25rem 1.15rem 4.5rem;margin-bottom:.6rem;position:relative;
+    font-size:.92rem;color:var(--white-dim);transition:border-color .2s;
+  }
+  .action-list li:hover{border-color:rgba(201,168,76,.3)}
+  .action-list li::before{
+    content:counter(action,decimal-leading-zero);position:absolute;left:1rem;top:50%;transform:translateY(-50%);
+    font-size:1.4rem;font-weight:800;color:rgba(201,168,76,.2);
+  }
+
+  /* ── FOOTER ── */
+  footer{
+    text-align:center;padding:3rem 2rem;color:var(--white-dim);font-size:.8rem;
+    border-top:1px solid rgba(201,168,76,.1);
+  }
+  footer span{color:var(--gold)}
+
+  /* ── SCROLL REVEAL ── */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">LEONIDAS MEDITECH</div>
+  <ul>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#ads">Ad Copy</a></li>
+    <li><a href="#landing">Landing Pages</a></li>
+    <li><a href="#sequence">SMS/Email</a></li>
+    <li><a href="#calendar">Calendar</a></li>
+    <li><a href="#website">Website Fixes</a></li>
+    <li><a href="#copywriting">Copywriting</a></li>
+    <li><a href="#actions">Actions</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">Prepared 01/04/2026</div>
+  <h1>Leonidas Meditech<br><span>Marketing Plan</span></h1>
+  <p>A complete go-to-market strategy for the Australian beauty device market. Three campaigns, ten ads, full follow-up automation, and a clear action roadmap.</p>
+  <div class="nav-dots">
+    <a href="#summary">Executive Summary</a>
+    <a href="#ads">10 Ads</a>
+    <a href="#landing">Landing Pages</a>
+    <a href="#sequence">8 Touchpoints</a>
+    <a href="#calendar">Content Calendar</a>
+    <a href="#website">Website Fixes</a>
+    <a href="#actions">14-Step Action List</a>
+  </div>
+</div>
+
+<!-- ════════════════════ EXECUTIVE SUMMARY ════════════════════ -->
+<section id="summary">
+  <div class="reveal">
+    <span class="section-tag">Section 01</span>
+    <h2 class="section-title">Executive Summary</h2>
+    <p class="section-sub">Three campaigns designed to take Leonidas from unknown to trusted supplier in the Australian clinic market.</p>
+  </div>
+  <div class="campaign-grid reveal">
+    <div class="campaign-card">
+      <div class="num">01</div>
+      <h3>Campaign 1: Awareness</h3>
+      <div class="meta">
+        <span>$30–50/day</span>
+        <span>Video Views / Reach</span>
+      </div>
+      <p><strong>Audience:</strong> AU beauty professionals, clinic owners, aestheticians</p>
+      <p style="margin-top:.5rem">Three ads (brand story, price disruption, device showcase) designed to build recognition and establish Mohammed as the face of the brand. Video-first creative that positions Leonidas as the direct-from-Korea alternative.</p>
+      <p style="margin-top:.5rem;font-size:.8rem;color:var(--gold)">3 Ads &bull; Video &amp; Carousel</p>
+    </div>
+    <div class="campaign-card">
+      <div class="num">02</div>
+      <h3>Campaign 2: Lead Generation</h3>
+      <div class="meta">
+        <span>$40–60/day</span>
+        <span>Lead Forms</span>
+      </div>
+      <p><strong>Audience:</strong> Retarget video viewers + cold beauty professionals</p>
+      <p style="margin-top:.5rem">Four device-specific ads (Picosecond, CO2 Fractional, EMS, LED) each with ROI messaging and clear CTAs. Drives to Meta lead forms for direct enquiry capture.</p>
+      <p style="margin-top:.5rem;font-size:.8rem;color:var(--gold)">4 Ads &bull; Device-Specific</p>
+    </div>
+    <div class="campaign-card">
+      <div class="num">03</div>
+      <h3>Campaign 3: Retargeting</h3>
+      <div class="meta">
+        <span>$20–30/day</span>
+        <span>Conversions</span>
+      </div>
+      <p><strong>Audience:</strong> Website visitors, lead form openers, 50%+ video viewers</p>
+      <p style="margin-top:.5rem">Three conversion-focused ads (testimonial/social proof, support &amp; service, leasing/finance) to close warm leads who need one more push. Trust-building creative.</p>
+      <p style="margin-top:.5rem;font-size:.8rem;color:var(--gold)">3 Ads &bull; Trust &amp; Conversion</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════ AD COPY ════════════════════ -->
+<section id="ads">
+  <div class="reveal">
+    <span class="section-tag">Section 02</span>
+    <h2 class="section-title">Ad Copy</h2>
+    <p class="section-sub">All 10 ads across three campaigns. Click to expand each ad for full copy, hooks, and CTAs.</p>
+  </div>
+
+  <!-- Campaign 1 -->
+  <div class="campaign-group reveal">
+    <div class="campaign-group-title">Campaign 1: Awareness — Video Views / Reach</div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Ad 1.1: Brand Story — Mohammed On Camera (45–60 sec) <span class="arrow">▼</span></div>
+      <div class="accordion-body">
+        <div class="ad-meta"><span>Video</span><span>45–60 sec</span><span>Awareness</span></div>
+        <div class="hook">"Australian clinics are paying 2-3 times too much for their devices."</div>
+        <h4>Script</h4>
+        <p>"I'm Mohammed from Leonidas Meditech. After 10 years in this industry, I got tired of watching clinic owners get overcharged for the same technology.</p>
+        <p>So I flew to Korea, met the manufacturers directly, and brought back professional-grade devices at a price that actually lets clinics make money.</p>
+        <p>We're talking Picosecond lasers, CO2 Fractional, EMS body sculpting, LED, the full range. Same Korean engineering the big brands use. Without the markup.</p>
+        <p>Every device comes with training, a qualified service engineer, and our team available 7 days a week.</p>
+        <p>If you're a clinic owner and you're tired of overpaying, let's have a conversation."</p>
+        <div class="cta-line"><strong>CTA:</strong> Enquire Now &nbsp;|&nbsp; <strong>Headline:</strong> Australian Clinics Are Paying Too Much For Devices. We Fixed That.</div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Ad 1.2: Price Disruption — Video/Carousel (30 sec) <span class="arrow">▼</span></div>
+      <div class="accordion-body">
+        <div class="ad-meta"><span>Video / Carousel</span><span>30 sec</span><span>Awareness</span></div>
+        <div class="hook">"Why are you still paying premium prices for devices made in the same Korean factories?"</div>
+        <h4>Body</h4>
+        <p>The beauty device industry has a pricing problem.</p>
+        <p>Big distributors import from the same Korean manufacturers, add their markup, and charge Australian clinics a premium for what's essentially the same technology.</p>
+        <p>Leonidas Meditech works directly with top Korean manufacturers to bring you:</p>
+        <ul>
+          <li>Professional-grade aesthetic devices</li>
+          <li>Full training and certification</li>
+          <li>7-day customer support</li>
+          <li>Qualified service engineers</li>
+          <li>Leasing options that make sense</li>
+        </ul>
+        <p>Same quality. Fraction of the price. Because your margin matters.</p>
+        <div class="cta-line"><strong>CTA:</strong> See Our Devices &nbsp;|&nbsp; <strong>Headline:</strong> Korean Engineered. Australian Supported. Priced For Real Clinics.</div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Ad 1.3: Device Showcase — Quick Cuts (20–30 sec) <span class="arrow">▼</span></div>
+      <div class="accordion-body">
+        <div class="ad-meta"><span>Video</span><span>20–30 sec</span><span>Awareness</span></div>
+        <div class="hook">"11 devices. One supplier. Zero markup."</div>
+        <h4>Script (text overlays on device footage)</h4>
+        <p>[Shot: Picosecond firing] "Picosecond laser. Tattoo removal, pigmentation, skin rejuvenation."</p>
+        <p>[Shot: CO2 in action] "CO2 Fractional. Anti-ageing, scarring, resurfacing."</p>
+        <p>[Shot: EMS treatment] "EMS Body Sculpting. The fastest-growing treatment in Australia."</p>
+        <p>[Shot: LED panel] "LED Rejuvenation. Zero downtime. High demand."</p>
+        <p>[Shot: Support team] "Training included. Service engineers on call. 7-day support."</p>
+        <p>[End card] "Leonidas Meditech. The smart way to equip your clinic."</p>
+        <div class="cta-line"><strong>CTA:</strong> Enquire For Clinic Pricing &nbsp;|&nbsp; <strong>Headline:</strong> 11 Professional-Grade Devices. All Korean Engineered. All Affordable.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Campaign 2 -->
+  <div class="campaign-group reveal">
+    <div class="campaign-group-title">Campaign 2: Lead Generation — Device-Specific</div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Ad 2.1: Picosecond Laser <span class="arrow">▼</span></div>
+      <div class="accordion-body">
+        <div class="ad-meta"><span>Lead Gen</span><span>Picosecond</span><span>$40–60/day</span></div>
+        <div class="hook">The Most Powerful Picosecond Device We've Ever Built. Now Available In Australia.</div>
+        <h4>Body</h4>
+        <p>The Leonidas PicoTech PRO PLUS shatters all coloured inks with precision that competitors can't match.</p>
+        <p>But it's not just for tattoo removal.</p>
+        <p>Melasma. Pigmentation. Skin rejuvenation. Fine lines. This one device opens up multiple revenue streams for your clinic.</p>
+        <h4>What's Included</h4>
+        <ul>
+          <li>Device + full wavelength range</li>
+          <li>Hands-on training and certification</li>
+          <li>Dedicated service engineer</li>
+          <li>7-day support line</li>
+          <li>Flexible leasing available</li>
+        </ul>
+        <p>Clinics using Pico technology are charging $200-500 per session. At 3-5 clients per day, the device pays for itself faster than you think.</p>
+        <p>This is the device that changes your clinic's revenue.</p>
+        <div class="cta-line"><strong>CTA:</strong> Enquire Now &nbsp;|&nbsp; <strong>Alt Headline:</strong> Add Picosecond To Your Clinic. Training Included. Leasing Available.</div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Ad 2.2: CO2 Fractional Laser <span class="arrow">▼</span></div>
+      <div class="accordion-body">
+        <div class="ad-meta"><span>Lead Gen</span><span>CO2 Fractional</span><span>$40–60/day</span></div>
+        <div class="hook">CO2 Fractional Is The Gold Standard In Skin Rejuvenation. Now Affordable For Every Clinic.</div>
+        <h4>Body</h4>
+        <p>Your clients are asking for it. CO2 Fractional delivers results that no facial or serum can match.</p>
+        <p>Fine lines, acne scarring, uneven texture, sun damage. One device, multiple treatment protocols, premium pricing per session.</p>
+        <p>The Leonidas CO2 Fractional Laser is Korean engineered for precision and reliability. And it costs a fraction of what you'd expect.</p>
+        <h4>What You Get</h4>
+        <ul>
+          <li>Professional-grade CO2 Fractional device</li>
+          <li>Full training on treatment protocols</li>
+          <li>Ongoing technical support</li>
+          <li>Flexible leasing to protect your cash flow</li>
+        </ul>
+        <p>Average session price: $300-800. This device earns its place in your treatment room fast.</p>
+        <div class="cta-line"><strong>CTA:</strong> Get Clinic Pricing &nbsp;|&nbsp; <strong>Alt Headline:</strong> Add Anti-Ageing To Your Menu. CO2 Fractional From Leonidas.</div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Ad 2.3: EMS Body Sculpting <span class="arrow">▼</span></div>
+      <div class="accordion-body">
+        <div class="ad-meta"><span>Lead Gen</span><span>EMS</span><span>$40–60/day</span></div>
+        <div class="hook">EMS Body Sculpting Is The Fastest Growing Treatment In Australian Clinics. Here's Why.</div>
+        <h4>Body</h4>
+        <p>Your clients want body contouring without surgery. EMS delivers visible results in sessions, not months.</p>
+        <p>The demand is there. The only question is whether your clinic is offering it.</p>
+        <h4>The Leonidas Muscle Stimulator (EMS) gives you:</h4>
+        <ul>
+          <li>Non-invasive body sculpting treatments</li>
+          <li>Zero downtime for clients</li>
+          <li>Quick treatment times (30 min sessions)</li>
+          <li>High client satisfaction and rebooking rates</li>
+        </ul>
+        <p>Add a high-demand, high-margin service without the high device cost.</p>
+        <p>Training included. Leasing available. Support 7 days a week.</p>
+        <div class="cta-line"><strong>CTA:</strong> Enquire Now &nbsp;|&nbsp; <strong>Alt Headline:</strong> Add Body Sculpting To Your Clinic. From Less Than You Think.</div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Ad 2.4: LED Rejuvenation (Entry-Level) <span class="arrow">▼</span></div>
+      <div class="accordion-body">
+        <div class="ad-meta"><span>Lead Gen</span><span>LED</span><span>Entry-Level</span></div>
+        <div class="hook">Start With LED. Low Cost. High Demand. Zero Downtime.</div>
+        <h4>Body</h4>
+        <p>Not ready for a laser? LED rejuvenation is the perfect first device for clinics looking to expand their treatment menu.</p>
+        <p>Your clients already know about LED therapy. They're searching for it. They want it.</p>
+        <h4>The Leonidas LED Rejuvenation device offers:</h4>
+        <ul>
+          <li>Multiple wavelength settings</li>
+          <li>Skin rejuvenation, acne treatment, anti-inflammatory</li>
+          <li>No consumables, no downtime, no risk</li>
+          <li>Clients love it. Rebooking rates are high.</li>
+        </ul>
+        <p>This is the lowest barrier entry point to device-based treatments. Add it to your clinic, start earning from week one.</p>
+        <div class="cta-line"><strong>CTA:</strong> See Pricing &nbsp;|&nbsp; <strong>Alt Headline:</strong> The Easiest Way To Add Device Treatments To Your Clinic.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Campaign 3 -->
+  <div class="campaign-group reveal">
+    <div class="campaign-group-title">Campaign 3: Retargeting — Conversion</div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Ad 3.1: Testimonial / Social Proof <span class="arrow">▼</span></div>
+      <div class="accordion-body">
+        <div class="ad-meta"><span>Retargeting</span><span>Social Proof</span><span>$20–30/day</span></div>
+        <div class="hook">"I Wish I'd Found Leonidas Sooner." See What Clinic Owners Are Saying.</div>
+        <h4>Body</h4>
+        <p>[Placeholder — needs real testimonial]</p>
+        <p>"We were quoted $XX,000 from another supplier for the same spec device. Leonidas came in at half the price, included training, and their support team actually picks up the phone. The device has been running flawlessly for 6 months."<br>— [Clinic Owner Name], [Clinic Name], [Location]</p>
+        <p>If you're comparing devices, talk to us before you sign anything.</p>
+        <p>We'll show you the specs side-by-side. No pressure. Just transparency.</p>
+        <div class="cta-line"><strong>CTA:</strong> Book A Free Consultation &nbsp;|&nbsp; <strong>Alt Headline:</strong> Don't Overpay For Your Next Device. Compare First.</div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Ad 3.2: Support & Service <span class="arrow">▼</span></div>
+      <div class="accordion-body">
+        <div class="ad-meta"><span>Retargeting</span><span>Trust-Building</span><span>$20–30/day</span></div>
+        <div class="hook">Still Researching? Here's What Real Support Looks Like.</div>
+        <h4>Body</h4>
+        <p>Buying a device is the easy part. What happens after is what matters.</p>
+        <p>With Leonidas Meditech, you get:</p>
+        <ul>
+          <li>Qualified service engineers (not just a call centre)</li>
+          <li>7-day customer support (yes, weekends too)</li>
+          <li>Hands-on training at your clinic</li>
+          <li>Ongoing protocol guidance</li>
+          <li>Fast parts and servicing</li>
+        </ul>
+        <p>Other suppliers disappear after the sale. We don't.</p>
+        <p>Your clinic is your livelihood. We treat it that way.</p>
+        <div class="cta-line"><strong>CTA:</strong> Enquire Now &nbsp;|&nbsp; <strong>Alt Headline:</strong> 7-Day Support. Qualified Engineers. Real People Who Pick Up The Phone.</div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Ad 3.3: Leasing / Finance <span class="arrow">▼</span></div>
+      <div class="accordion-body">
+        <div class="ad-meta"><span>Retargeting</span><span>Finance</span><span>$20–30/day</span></div>
+        <div class="hook">From $X Per Week. Your New Device Pays For Itself In Weeks, Not Months.</div>
+        <h4>Body</h4>
+        <p>Worried about the upfront cost? Don't be.</p>
+        <p>With flexible leasing through Leonidas Meditech:</p>
+        <ul>
+          <li>Low weekly payments that fit your cash flow</li>
+          <li>Tax-deductible equipment lease</li>
+          <li>Device starts earning from day one</li>
+          <li>No massive lump sum required</li>
+        </ul>
+        <h4>Here's The Maths</h4>
+        <p>Average Pico session: $350<br>
+        Sessions per week: 10<br>
+        Weekly revenue: $3,500<br>
+        Weekly lease payment: $[X]</p>
+        <p>The device pays for itself multiple times over. Every single week.</p>
+        <div class="cta-line"><strong>CTA:</strong> Calculate Your ROI &nbsp;|&nbsp; <strong>Alt Headline:</strong> Your Next Device Should Pay For Itself. Here's How.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════ LANDING PAGE COPY ════════════════════ -->
+<section id="landing">
+  <div class="reveal">
+    <span class="section-tag">Section 03</span>
+    <h2 class="section-title">Landing Page Copy</h2>
+    <p class="section-sub">Homepage rewrite and individual device page template. Ready to implement.</p>
+  </div>
+
+  <div class="lp-section reveal">
+    <h3>Homepage Rewrite</h3>
+    <h4>Hero Section</h4>
+    <p><strong>Headline:</strong> Professional-Grade Aesthetic Devices. Korean Engineered. Priced For Australian Clinics.</p>
+    <p><strong>Subheadline:</strong> 11 devices. Full training. 7-day support. Qualified service engineers. Leasing available.</p>
+    <p><strong>CTA:</strong> See Our Devices | Book A Free Consultation</p>
+
+    <h4>Why Leonidas</h4>
+    <p style="margin-bottom:.5rem"><strong>Headline:</strong> Why Australian Clinics Are Switching To Leonidas</p>
+    <div class="lp-cols">
+      <div class="lp-col">
+        <h5>Direct From Korea</h5>
+        <p>We source directly from top Korean manufacturers. No middlemen, no inflated pricing. You get the same technology the big brands sell, without the brand tax.</p>
+      </div>
+      <div class="lp-col">
+        <h5>Training Included</h5>
+        <p>Every device comes with hands-on training and certification for your team. We don't just drop off a machine and leave.</p>
+      </div>
+      <div class="lp-col">
+        <h5>7-Day Support</h5>
+        <p>Our customer service team is available 7 days a week. When something needs attention, we pick up the phone. Qualified service engineers, not call centres.</p>
+      </div>
+      <div class="lp-col">
+        <h5>Leasing That Works</h5>
+        <p>Flexible leasing options designed around clinic cash flow. Your device starts earning before your first payment is due.</p>
+      </div>
+    </div>
+
+    <h4>Featured Devices</h4>
+    <p>Show top 4 devices with: device image, 3-line description, "Avg session price: $X" (to show revenue potential), and "Enquire" button.</p>
+
+    <h4>Mohammed's Story</h4>
+    <p>"I flew to Korea because Australian clinics deserve better."<br>[Photo of Mohammed + 3-4 sentence version of his story]<br>This builds trust. Personal brand is the differentiator.</p>
+
+    <h4>Social Proof</h4>
+    <p>"Trusted by clinics across Australia"<br>[3-5 testimonial cards] [Logos of clinics if available]</p>
+
+    <h4>ROI Calculator (Interactive)</h4>
+    <p>"How much could this device earn your clinic?"<br>Input: Device type, sessions per week, session price<br>Output: Weekly/monthly/annual revenue, payback period</p>
+
+    <h4>CTA</h4>
+    <p>"Ready to equip your clinic? Book a free consultation."<br>[Enquiry form]</p>
+  </div>
+
+  <div class="lp-section reveal">
+    <h3>Individual Device Page Template</h3>
+    <p>Each device page needs:</p>
+    <ul>
+      <li>Hero image of the device (professional photo, not stock)</li>
+      <li>One-line hook: "The [device] that pays for itself in [X] weeks."</li>
+      <li>What it treats (bulleted list with icons)</li>
+      <li>Technical specifications (wavelengths, power, dimensions, weight, warranty)</li>
+      <li>What's included (device, training, support, warranty details)</li>
+      <li>ROI section: "Average session price: $X. At Y sessions/week, this device generates $Z/month."</li>
+      <li>Before/after results gallery (compliant, with disclaimers)</li>
+      <li>"How it works" section (3-4 step process)</li>
+      <li>FAQ section (common questions about the device)</li>
+      <li>CTA: "Enquire for clinic pricing" form</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════ SMS/EMAIL SEQUENCE ════════════════════ -->
+<section id="sequence">
+  <div class="reveal">
+    <span class="section-tag">Section 04</span>
+    <h2 class="section-title">SMS/Email Follow-Up Sequence</h2>
+    <p class="section-sub">8 automated touchpoints over 14 days. Alternating SMS and email to maximise response rates.</p>
+  </div>
+
+  <div class="timeline reveal">
+    <!-- SMS 1 -->
+    <div class="timeline-item sms">
+      <div class="day-badge">Immediate</div>
+      <span class="type-badge">SMS</span>
+      <h4>SMS 1: First Contact</h4>
+      <div class="content">Hey {{contact.first_name}}, it's Mohammed from Leonidas Meditech. Thanks for enquiring about our devices. I'd love to chat about what would work best for your clinic. When's a good time to call? Mohammed - 0XXX XXX XXX</div>
+    </div>
+
+    <!-- EMAIL 1 -->
+    <div class="timeline-item email">
+      <div class="day-badge">Immediate</div>
+      <span class="type-badge">Email</span>
+      <h4>Email 1: Your Device Enquiry</h4>
+      <div class="content">Subject: Your device enquiry with Leonidas Meditech
+
+Hey {{contact.first_name}},
+
+Thanks for your interest in Leonidas Meditech.
+
+We work directly with top Korean manufacturers to bring professional-grade aesthetic devices to Australian clinics at prices that actually make sense.
+
+Every device comes with:
+- Hands-on training and certification
+- Qualified service engineers
+- 7-day customer support
+- Flexible leasing options
+
+I'd love to learn more about your clinic and recommend the right fit. Are you free for a quick call this week?
+
+You can reply to this email or call me directly on 0XXX XXX XXX.
+
+Warm regards,
+Mohammed Dandachli
+CEO, Leonidas Meditech</div>
+    </div>
+
+    <!-- SMS 2 -->
+    <div class="timeline-item sms">
+      <div class="day-badge">Day 2</div>
+      <span class="type-badge">SMS</span>
+      <h4>SMS 2: Follow-Up</h4>
+      <div class="content">Hey {{contact.first_name}}, just following up on your device enquiry. Happy to answer any questions or send through specs and pricing for the device you're interested in. Mohammed - Leonidas Meditech</div>
+    </div>
+
+    <!-- EMAIL 2 -->
+    <div class="timeline-item email">
+      <div class="day-badge">Day 3</div>
+      <span class="type-badge">Email</span>
+      <h4>Email 2: ROI Focused</h4>
+      <div class="content">Subject: How much could a new device earn your clinic?
+
+Hey {{contact.first_name}},
+
+One of the most common questions we get is "will the device pay for itself?"
+
+Here's the short answer: yes. Usually within weeks, not months.
+
+Take our Picosecond laser as an example:
+- Average session price: $300-500
+- Average sessions per day: 3-5
+- Weekly revenue potential: $4,500-12,500
+- Lease payment: a fraction of that
+
+The maths works for every device we offer. And because we source direct from Korea, your margins are better from day one.
+
+Want me to run the numbers for your specific clinic? Reply to this email or call me on 0XXX XXX XXX.
+
+Mohammed
+Leonidas Meditech</div>
+    </div>
+
+    <!-- SMS 3 -->
+    <div class="timeline-item sms">
+      <div class="day-badge">Day 5</div>
+      <span class="type-badge">SMS</span>
+      <h4>SMS 3: Demo Offer</h4>
+      <div class="content">Hey {{contact.first_name}}, still thinking about adding a new device to your clinic? I can organise a free demo so you can see it in action before committing. Let me know. Mohammed - Leonidas Meditech</div>
+    </div>
+
+    <!-- EMAIL 3 -->
+    <div class="timeline-item email">
+      <div class="day-badge">Day 7</div>
+      <span class="type-badge">Email</span>
+      <h4>Email 3: Demo Invitation</h4>
+      <div class="content">Subject: See the device in action before you decide
+
+Hey {{contact.first_name}},
+
+I know buying a device is a big decision. That's why we offer free consultations and demos.
+
+You can:
+- See the device in person
+- Ask our engineers any technical questions
+- Get a full breakdown of costs, leasing, and ROI
+- No pressure, no obligation
+
+If you're comparing suppliers, I'd encourage you to get our quote before signing with anyone else. You might be surprised at the difference.
+
+Book a demo: [link]
+Or call me directly: 0XXX XXX XXX
+
+Mohammed
+Leonidas Meditech</div>
+    </div>
+
+    <!-- SMS 4 -->
+    <div class="timeline-item sms">
+      <div class="day-badge">Day 10</div>
+      <span class="type-badge">SMS</span>
+      <h4>SMS 4: Gentle Check-In</h4>
+      <div class="content">Hey {{contact.first_name}}, are you still looking at devices for your clinic? Happy to help in any way. Even if it's just answering questions about what device suits your services best. Mohammed - Leonidas Meditech 0XXX XXX XXX</div>
+    </div>
+
+    <!-- EMAIL 4 -->
+    <div class="timeline-item email">
+      <div class="day-badge">Day 14</div>
+      <span class="type-badge">Email</span>
+      <h4>Email 4: Final Push — Social Proof</h4>
+      <div class="content">Subject: Clinic owners are switching to Leonidas. Here's why.
+
+Hey {{contact.first_name}},
+
+More Australian clinics are moving to Leonidas Meditech because:
+- Same Korean-engineered technology as premium brands
+- 40-60% lower pricing (direct from manufacturer)
+- Full training included with every device
+- 7-day support with qualified service engineers
+- Flexible leasing that protects your cash flow
+
+If you've been quoted by another supplier, let me show you what the same device costs through us. No strings attached.
+
+Reply or call 0XXX XXX XXX.
+
+Mohammed
+Leonidas Meditech</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════ CONTENT CALENDAR ════════════════════ -->
+<section id="calendar">
+  <div class="reveal">
+    <span class="section-tag">Section 05</span>
+    <h2 class="section-title">Content Calendar</h2>
+    <p class="section-sub">Organic social posting schedule for the first month. Three posts per week.</p>
+  </div>
+
+  <div class="cal-week reveal">
+    <h3>Week 1</h3>
+    <div class="cal-grid">
+      <div class="cal-card">
+        <div class="day">Monday</div>
+        <span class="format">60 sec Reel</span>
+        <p>Mohammed on camera: "Why I started Leonidas"</p>
+      </div>
+      <div class="cal-card">
+        <div class="day">Wednesday</div>
+        <span class="format">15 sec Reel</span>
+        <p>Device showcase: Picosecond laser in action</p>
+      </div>
+      <div class="cal-card">
+        <div class="day">Friday</div>
+        <span class="format">Carousel</span>
+        <p>"11 devices. One supplier. Zero markup." (carousel of all devices)</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cal-week reveal">
+    <h3>Week 2</h3>
+    <div class="cal-grid">
+      <div class="cal-card">
+        <div class="day">Monday</div>
+        <span class="format">Carousel</span>
+        <p>"Picosecond vs Q-Switch: which is right for your clinic?"</p>
+      </div>
+      <div class="cal-card">
+        <div class="day">Wednesday</div>
+        <span class="format">Reel</span>
+        <p>Behind the scenes: warehouse/device unboxing</p>
+      </div>
+      <div class="cal-card">
+        <div class="day">Friday</div>
+        <span class="format">Static</span>
+        <p>"How much can a CO2 Fractional earn your clinic?" (static with numbers)</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cal-week reveal">
+    <h3>Week 3</h3>
+    <div class="cal-grid">
+      <div class="cal-card">
+        <div class="day">Monday</div>
+        <span class="format">60 sec Reel</span>
+        <p>Mohammed on camera: "What to look for when buying a laser device"</p>
+      </div>
+      <div class="cal-card">
+        <div class="day">Wednesday</div>
+        <span class="format">15 sec Reel</span>
+        <p>Device demo: EMS body sculpting treatment</p>
+      </div>
+      <div class="cal-card">
+        <div class="day">Friday</div>
+        <span class="format">Static</span>
+        <p>Testimonial post: clinic owner quote + photo</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cal-week reveal">
+    <h3>Week 4</h3>
+    <div class="cal-grid">
+      <div class="cal-card">
+        <div class="day">Monday</div>
+        <span class="format">Carousel</span>
+        <p>"5 questions to ask before leasing a device"</p>
+      </div>
+      <div class="cal-card">
+        <div class="day">Wednesday</div>
+        <span class="format">15 sec Reel</span>
+        <p>Device demo: LED rejuvenation session</p>
+      </div>
+      <div class="cal-card">
+        <div class="day">Friday</div>
+        <span class="format">60 sec Reel</span>
+        <p>Mohammed on camera: "The real cost of buying a device in Australia"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════ WEBSITE RECOMMENDATIONS ════════════════════ -->
+<section id="website">
+  <div class="reveal">
+    <span class="section-tag">Section 06</span>
+    <h2 class="section-title">Website Recommendations</h2>
+    <p class="section-sub">10 fixes to transform leonidasmeditech.com into a lead-generating machine. Click items to mark as done.</p>
+  </div>
+
+  <ul class="checklist reveal">
+    <li>Fix homepage hero image (currently not loading properly)</li>
+    <li>Remove $0.00 pricing from all products — replace with "Enquire for clinic pricing"</li>
+    <li>Rewrite homepage copy using the new tagline and value proposition</li>
+    <li>Add technical specifications to every device page (wavelengths, power, dimensions, weight, warranty)</li>
+    <li>Add ROI messaging to each device page — "Average session price: $X. At Y sessions/week, this device generates $Z/month."</li>
+    <li>Build Mohammed's personal story section on the homepage to build trust and differentiation</li>
+    <li>Add social proof section — testimonial cards and clinic logos (collect 3-5 quotes)</li>
+    <li>Build an interactive ROI calculator — input: device type, sessions/week, session price → output: weekly/monthly/annual revenue</li>
+    <li>Create individual landing pages for each device using the template (hero, treatments, specs, ROI, FAQ, CTA form)</li>
+    <li>Install Meta Pixel for tracking and retargeting audience building</li>
+  </ul>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════ COPYWRITING FIXES ════════════════════ -->
+<section id="copywriting">
+  <div class="reveal">
+    <span class="section-tag">Section 07</span>
+    <h2 class="section-title">Copywriting Fixes</h2>
+    <p class="section-sub">Specific before/after rewrites for the current website. Direct replacements, ready to implement.</p>
+  </div>
+
+  <div class="ba-card reveal">
+    <h4>Homepage Tagline</h4>
+    <div class="ba-row">
+      <div class="ba-box before">
+        <div class="label">Before</div>
+        "Innovation. Excellence. Affordability. Experience the difference."
+      </div>
+      <div class="ba-box after">
+        <div class="label">After</div>
+        "Professional-grade aesthetic devices. Direct from Korea. Priced for Australian clinics."
+      </div>
+    </div>
+  </div>
+
+  <div class="ba-card reveal">
+    <h4>Picosecond Description</h4>
+    <div class="ba-row">
+      <div class="ba-box before">
+        <div class="label">Before</div>
+        "Made in Korea, It's advanced pico-second technology ensures precise and effective treatment, breaking down pigment particles and stimulating collagen production with unparalleled precision."
+      </div>
+      <div class="ba-box after">
+        <div class="label">After</div>
+        "The Leonidas PicoTech PRO delivers picosecond pulses across multiple wavelengths to target all ink colours, pigmented lesions, melasma, and stimulate deep collagen renewal. Korean engineered for precision. Built for clinics that need reliability and results. Average session price: $300-500."
+      </div>
+    </div>
+  </div>
+
+  <div class="ba-card reveal">
+    <h4>About Page — Mohammed Section</h4>
+    <div class="ba-row">
+      <div class="ba-box before">
+        <div class="label">Before</div>
+        "Meet Mohommed Dandachli, a visionary CEO..."
+      </div>
+      <div class="ba-box after">
+        <div class="label">After</div>
+        "After a decade in the Australian beauty industry, Mohammed saw the same problem everywhere: clinics paying premium prices for devices made in the same Korean factories. So he flew to Korea, met the manufacturers directly, and built Leonidas Meditech to give Australian clinics access to the same technology without the markup. Every device, every clinic, every day."
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════ ACTION LIST ════════════════════ -->
+<section id="actions">
+  <div class="reveal">
+    <span class="section-tag">Section 08</span>
+    <h2 class="section-title">Immediate Action List</h2>
+    <p class="section-sub">14 steps in priority order. Start at the top, work your way down. Each step unlocks the next.</p>
+  </div>
+
+  <ol class="action-list reveal">
+    <li>Fix website images (homepage hero not loading properly)</li>
+    <li>Remove $0.00 pricing from all products. Replace with "Enquire for clinic pricing"</li>
+    <li>Film 3 videos with Mohammed (brand story, device demo, pricing comparison)</li>
+    <li>Set up Meta Ads Manager with Pixel on leonidasmeditech.com</li>
+    <li>Launch Campaign 1 (awareness videos, $30-50/day)</li>
+    <li>Rewrite homepage copy (use the rewrite above)</li>
+    <li>Add technical specs to each device page</li>
+    <li>Collect 3 clinic owner testimonials (even text quotes)</li>
+    <li>Create Meta lead form</li>
+    <li>Launch Campaign 2 (device-specific lead gen, $40-60/day)</li>
+    <li>Set up follow-up SMS/email sequence in CRM</li>
+    <li>Build individual landing pages for each device</li>
+    <li>Add ROI calculator to website</li>
+    <li>Launch Campaign 3 (retargeting, $20-30/day)</li>
+  </ol>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Prepared for <span>Leonidas Meditech</span> &bull; Australian Beauty Device Market &bull; 01/04/2026</p>
+  <p style="margin-top:.4rem;opacity:.5">Confidential. Prepared by Media Waffle.</p>
+</footer>
+
+<script>
+// Accordion
+document.querySelectorAll('.accordion-header').forEach(h=>{
+  h.addEventListener('click',()=>{
+    const item=h.parentElement;
+    const body=item.querySelector('.accordion-body');
+    if(item.classList.contains('open')){
+      body.style.maxHeight=null;
+      item.classList.remove('open');
+    }else{
+      item.classList.add('open');
+      body.style.maxHeight=body.scrollHeight+'px';
+    }
+  });
+});
+
+// Checklist toggle
+document.querySelectorAll('.checklist li').forEach(li=>{
+  li.addEventListener('click',()=>li.classList.toggle('checked'));
+});
+
+// Scroll reveal
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Smooth scroll offset for fixed nav
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)window.scrollTo({top:t.offsetTop-60,behavior:'smooth'});
+  });
+});
+</script>
+
+</body>
+</html>
