@@ -7,126 +7,131 @@
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --bg:#1a1a2e;
-    --bg-card:#16213e;
-    --bg-card-alt:#0f3460;
-    --gold:#c9a84c;
-    --gold-light:#e0c872;
-    --gold-dark:#a88a30;
-    --white:#f0f0f0;
-    --white-dim:#b8b8cc;
-    --green:#4ecca3;
-    --red:#e74c3c;
-    --blue:#3498db;
-    --radius:12px;
-    --shadow:0 8px 32px rgba(0,0,0,.35);
+    --bg:#ffffff;
+    --bg-alt:#f5f5f5;
+    --bg-card:#ffffff;
+    --text:#1a1a1a;
+    --text-dim:#555555;
+    --accent:#000000;
+    --accent-sec:#333333;
+    --border:rgba(0,0,0,.1);
+    --border-hover:rgba(0,0,0,.25);
+    --green:#1a8a5c;
+    --red:#c0392b;
+    --blue:#2563eb;
+    --radius:10px;
+    --shadow:0 4px 24px rgba(0,0,0,.08);
   }
   html{scroll-behavior:smooth;font-size:16px}
   body{
     background:var(--bg);
-    color:var(--white);
+    color:var(--text);
     font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
     line-height:1.7;
     overflow-x:hidden;
   }
-  ::selection{background:var(--gold);color:var(--bg)}
-  a{color:var(--gold);text-decoration:none;transition:color .2s}
-  a:hover{color:var(--gold-light)}
+  ::selection{background:var(--accent);color:#fff}
+  a{color:var(--accent);text-decoration:none;transition:color .2s}
+  a:hover{color:var(--accent-sec)}
 
   /* ── NAV ── */
   nav{
     position:fixed;top:0;left:0;right:0;z-index:1000;
-    background:rgba(26,26,46,.92);
+    background:rgba(0,0,0,.95);
     backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(201,168,76,.15);
+    border-bottom:1px solid rgba(255,255,255,.08);
     padding:.75rem 2rem;
     display:flex;align-items:center;justify-content:space-between;
   }
-  nav .logo{font-weight:700;font-size:1.1rem;letter-spacing:1px;color:var(--gold)}
+  nav .logo{font-weight:700;font-size:1.1rem;letter-spacing:2px;color:#ffffff;text-transform:uppercase}
   nav ul{list-style:none;display:flex;gap:1.5rem;flex-wrap:wrap}
-  nav ul li a{font-size:.8rem;text-transform:uppercase;letter-spacing:.5px;color:var(--white-dim);transition:color .2s}
-  nav ul li a:hover{color:var(--gold)}
+  nav ul li a{font-size:.8rem;text-transform:uppercase;letter-spacing:.5px;color:rgba(255,255,255,.7);transition:color .2s}
+  nav ul li a:hover{color:#ffffff}
   @media(max-width:768px){nav ul{display:none}}
 
   /* ── HERO ── */
   .hero{
     min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
     padding:6rem 2rem 4rem;
-    background:linear-gradient(160deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);
+    background:#000000;
     position:relative;overflow:hidden;
+    color:#ffffff;
   }
   .hero::before{
-    content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
-    background:radial-gradient(ellipse at 30% 50%,rgba(201,168,76,.06) 0%,transparent 60%);
-    animation:heroGlow 8s ease-in-out infinite alternate;
+    content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+    background:radial-gradient(ellipse at 50% 40%,rgba(255,255,255,.03) 0%,transparent 70%);
   }
-  @keyframes heroGlow{0%{transform:translate(0,0)}100%{transform:translate(5%,3%)}}
   .hero>*{position:relative;z-index:1}
   .hero .badge{
-    display:inline-block;padding:.4rem 1.2rem;border:1px solid var(--gold);border-radius:50px;
-    font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:1.5rem;
+    display:inline-block;padding:.4rem 1.2rem;border:1px solid rgba(255,255,255,.25);border-radius:50px;
+    font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.7);margin-bottom:1.5rem;
   }
-  .hero h1{font-size:clamp(2rem,5vw,3.8rem);font-weight:800;line-height:1.15;margin-bottom:1rem;max-width:900px}
-  .hero h1 span{color:var(--gold)}
-  .hero p{font-size:1.15rem;color:var(--white-dim);max-width:650px;margin-bottom:2.5rem}
+  .hero h1{font-size:clamp(2rem,5vw,3.8rem);font-weight:800;line-height:1.15;margin-bottom:1rem;max-width:900px;color:#fff}
+  .hero h1 span{color:rgba(255,255,255,.5)}
+  .hero p{font-size:1.15rem;color:rgba(255,255,255,.6);max-width:650px;margin-bottom:2.5rem}
   .hero .nav-dots{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center}
   .hero .nav-dots a{
-    padding:.5rem 1rem;border:1px solid rgba(201,168,76,.3);border-radius:50px;
-    font-size:.75rem;color:var(--white-dim);transition:all .2s;
+    padding:.5rem 1rem;border:1px solid rgba(255,255,255,.2);border-radius:50px;
+    font-size:.75rem;color:rgba(255,255,255,.6);transition:all .2s;
   }
-  .hero .nav-dots a:hover{border-color:var(--gold);color:var(--gold)}
+  .hero .nav-dots a:hover{border-color:rgba(255,255,255,.5);color:#fff}
 
   /* ── SECTIONS ── */
   section{padding:5rem 2rem;max-width:1200px;margin:0 auto}
+  section.alt-bg{background:var(--bg-alt)}
+  section.alt-bg-wrap{background:var(--bg-alt);padding:0}
+  section.alt-bg-wrap>section{background:transparent}
   .section-tag{
     display:inline-block;font-size:.7rem;text-transform:uppercase;letter-spacing:3px;
-    color:var(--gold);border:1px solid rgba(201,168,76,.3);padding:.3rem .9rem;border-radius:50px;margin-bottom:1rem;
+    color:var(--accent);border:1px solid var(--border);padding:.3rem .9rem;border-radius:50px;margin-bottom:1rem;
   }
-  .section-title{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;margin-bottom:.5rem}
-  .section-sub{color:var(--white-dim);font-size:1rem;margin-bottom:3rem;max-width:700px}
+  .section-title{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;margin-bottom:.5rem;color:var(--accent)}
+  .section-sub{color:var(--text-dim);font-size:1rem;margin-bottom:3rem;max-width:700px}
   .divider{
     width:100%;height:1px;
-    background:linear-gradient(90deg,transparent,rgba(201,168,76,.25),transparent);
+    background:linear-gradient(90deg,transparent,var(--border),transparent);
     margin:0 auto;
   }
 
   /* ── CAMPAIGN CARDS ── */
   .campaign-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
   .campaign-card{
-    background:var(--bg-card);border:1px solid rgba(201,168,76,.12);border-radius:var(--radius);
-    padding:2rem;position:relative;overflow:hidden;transition:transform .25s,border-color .25s;
+    background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
+    padding:2rem;position:relative;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s;
+    box-shadow:var(--shadow);
   }
-  .campaign-card:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.35)}
+  .campaign-card:hover{transform:translateY(-4px);border-color:var(--border-hover);box-shadow:0 8px 32px rgba(0,0,0,.12)}
   .campaign-card .num{
     position:absolute;top:-10px;right:15px;font-size:5rem;font-weight:900;
-    color:rgba(201,168,76,.07);line-height:1;
+    color:rgba(0,0,0,.04);line-height:1;
   }
-  .campaign-card h3{color:var(--gold);font-size:1.2rem;margin-bottom:.5rem}
+  .campaign-card h3{color:var(--accent);font-size:1.2rem;margin-bottom:.5rem}
   .campaign-card .meta{display:flex;gap:1rem;flex-wrap:wrap;margin:.75rem 0 1rem}
   .campaign-card .meta span{
     font-size:.75rem;padding:.3rem .7rem;border-radius:50px;
-    background:rgba(201,168,76,.1);color:var(--gold-light);
+    background:var(--bg-alt);color:var(--accent-sec);border:1px solid var(--border);
   }
-  .campaign-card p{color:var(--white-dim);font-size:.92rem}
+  .campaign-card p{color:var(--text-dim);font-size:.92rem}
 
   /* ── ACCORDION ── */
   .campaign-group{margin-bottom:2.5rem}
   .campaign-group-title{
-    font-size:1.1rem;font-weight:700;color:var(--gold);margin-bottom:1rem;
-    padding-bottom:.5rem;border-bottom:1px solid rgba(201,168,76,.15);
+    font-size:1.1rem;font-weight:700;color:var(--accent);margin-bottom:1rem;
+    padding-bottom:.5rem;border-bottom:1px solid var(--border);
   }
   .accordion-item{
-    background:var(--bg-card);border:1px solid rgba(201,168,76,.1);border-radius:var(--radius);
+    background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
     margin-bottom:.75rem;overflow:hidden;transition:border-color .2s;
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
   }
-  .accordion-item:hover{border-color:rgba(201,168,76,.3)}
+  .accordion-item:hover{border-color:var(--border-hover)}
   .accordion-header{
     padding:1rem 1.5rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;
     font-weight:600;font-size:.95rem;transition:background .2s;user-select:none;
   }
-  .accordion-header:hover{background:rgba(201,168,76,.05)}
+  .accordion-header:hover{background:var(--bg-alt)}
   .accordion-header .arrow{
-    transition:transform .3s;font-size:.8rem;color:var(--gold);flex-shrink:0;margin-left:1rem;
+    transition:transform .3s;font-size:.8rem;color:var(--accent);flex-shrink:0;margin-left:1rem;
   }
   .accordion-item.open .accordion-header .arrow{transform:rotate(180deg)}
   .accordion-body{
@@ -139,109 +144,111 @@
   }
   .accordion-body .ad-meta span{
     font-size:.7rem;padding:.25rem .6rem;border-radius:50px;
-    background:rgba(201,168,76,.1);color:var(--gold-light);text-transform:uppercase;letter-spacing:.5px;
+    background:var(--bg-alt);color:var(--accent-sec);text-transform:uppercase;letter-spacing:.5px;
+    border:1px solid var(--border);
   }
-  .accordion-body h4{color:var(--gold);font-size:.9rem;margin:1rem 0 .4rem;text-transform:uppercase;letter-spacing:.5px}
-  .accordion-body p,.accordion-body li{color:var(--white-dim);font-size:.9rem;line-height:1.7}
+  .accordion-body h4{color:var(--accent);font-size:.9rem;margin:1rem 0 .4rem;text-transform:uppercase;letter-spacing:.5px}
+  .accordion-body p,.accordion-body li{color:var(--text-dim);font-size:.9rem;line-height:1.7}
   .accordion-body ul{padding-left:1.2rem;margin:.5rem 0}
   .accordion-body .hook{
-    background:rgba(201,168,76,.08);border-left:3px solid var(--gold);
+    background:var(--bg-alt);border-left:3px solid var(--accent);
     padding:.6rem 1rem;border-radius:0 8px 8px 0;margin-bottom:1rem;
-    font-style:italic;color:var(--gold-light);font-size:.95rem;
+    font-style:italic;color:var(--accent-sec);font-size:.95rem;
   }
   .accordion-body .cta-line{
-    margin-top:1rem;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.05);
-    font-size:.8rem;color:var(--white-dim);
+    margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--border);
+    font-size:.8rem;color:var(--text-dim);
   }
-  .accordion-body .cta-line strong{color:var(--gold)}
+  .accordion-body .cta-line strong{color:var(--accent)}
 
   /* ── LANDING PAGE COPY ── */
   .lp-section{
-    background:var(--bg-card);border:1px solid rgba(201,168,76,.1);border-radius:var(--radius);
+    background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
     padding:2rem;margin-bottom:1.5rem;
+    box-shadow:var(--shadow);
   }
-  .lp-section h3{color:var(--gold);font-size:1.1rem;margin-bottom:.75rem}
-  .lp-section h4{color:var(--gold-light);font-size:.95rem;margin:1rem 0 .4rem}
-  .lp-section p,.lp-section li{color:var(--white-dim);font-size:.9rem}
+  .lp-section h3{color:var(--accent);font-size:1.1rem;margin-bottom:.75rem}
+  .lp-section h4{color:var(--accent-sec);font-size:.95rem;margin:1rem 0 .4rem}
+  .lp-section p,.lp-section li{color:var(--text-dim);font-size:.9rem}
   .lp-section ul{padding-left:1.2rem;margin:.5rem 0}
   .lp-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:1rem}
-  .lp-col{background:rgba(201,168,76,.04);border-radius:8px;padding:1.25rem}
-  .lp-col h5{color:var(--gold);font-size:.9rem;margin-bottom:.4rem}
+  .lp-col{background:var(--bg-alt);border-radius:8px;padding:1.25rem;border:1px solid var(--border)}
+  .lp-col h5{color:var(--accent);font-size:.9rem;margin-bottom:.4rem}
   .lp-col p{font-size:.85rem}
 
   /* ── TIMELINE ── */
   .timeline{position:relative;padding-left:2rem}
   .timeline::before{
     content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;
-    background:linear-gradient(180deg,var(--gold),rgba(201,168,76,.15));
+    background:linear-gradient(180deg,var(--accent),rgba(0,0,0,.1));
   }
   .timeline-item{position:relative;margin-bottom:2rem;padding-left:1.5rem}
   .timeline-item::before{
     content:'';position:absolute;left:-2rem;top:6px;width:16px;height:16px;
-    border-radius:50%;background:var(--bg);border:2px solid var(--gold);z-index:1;
+    border-radius:50%;background:var(--bg);border:2px solid var(--accent);z-index:1;
   }
-  .timeline-item.sms::before{background:var(--gold)}
+  .timeline-item.sms::before{background:var(--accent)}
   .timeline-item .day-badge{
-    font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:.25rem;
+    font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:.25rem;
   }
   .timeline-item .type-badge{
     display:inline-block;font-size:.65rem;padding:.2rem .5rem;border-radius:50px;margin-bottom:.5rem;
     text-transform:uppercase;letter-spacing:.5px;
   }
-  .timeline-item.sms .type-badge{background:rgba(78,204,163,.15);color:var(--green)}
-  .timeline-item.email .type-badge{background:rgba(52,152,219,.15);color:var(--blue)}
+  .timeline-item.sms .type-badge{background:rgba(26,138,92,.1);color:var(--green)}
+  .timeline-item.email .type-badge{background:rgba(37,99,235,.1);color:var(--blue)}
   .timeline-item h4{font-size:.95rem;margin-bottom:.4rem}
   .timeline-item .content{
-    background:var(--bg-card);border:1px solid rgba(201,168,76,.08);border-radius:var(--radius);
-    padding:1.25rem;font-size:.85rem;color:var(--white-dim);line-height:1.7;white-space:pre-line;
+    background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);
+    padding:1.25rem;font-size:.85rem;color:var(--text-dim);line-height:1.7;white-space:pre-line;
   }
 
   /* ── CALENDAR GRID ── */
   .cal-week{margin-bottom:2rem}
-  .cal-week h3{font-size:1rem;color:var(--gold);margin-bottom:.75rem;font-weight:600}
+  .cal-week h3{font-size:1rem;color:var(--accent);margin-bottom:.75rem;font-weight:600}
   .cal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
   .cal-card{
-    background:var(--bg-card);border:1px solid rgba(201,168,76,.1);border-radius:var(--radius);
-    padding:1.25rem;transition:border-color .2s;
+    background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
+    padding:1.25rem;transition:border-color .2s;box-shadow:0 2px 8px rgba(0,0,0,.04);
   }
-  .cal-card:hover{border-color:rgba(201,168,76,.3)}
-  .cal-card .day{font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:.3rem}
+  .cal-card:hover{border-color:var(--border-hover)}
+  .cal-card .day{font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:.3rem}
   .cal-card .format{
     display:inline-block;font-size:.65rem;padding:.15rem .5rem;border-radius:50px;margin-bottom:.5rem;
-    background:rgba(201,168,76,.1);color:var(--gold-light);
+    background:var(--bg-alt);color:var(--accent-sec);border:1px solid var(--border);
   }
-  .cal-card p{font-size:.85rem;color:var(--white-dim)}
+  .cal-card p{font-size:.85rem;color:var(--text-dim)}
 
   /* ── CHECKLIST ── */
   .checklist{list-style:none;counter-reset:check}
   .checklist li{
     counter-increment:check;
-    background:var(--bg-card);border:1px solid rgba(201,168,76,.1);border-radius:var(--radius);
+    background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
     padding:1rem 1.25rem 1rem 3.5rem;margin-bottom:.6rem;position:relative;
-    font-size:.9rem;color:var(--white-dim);transition:border-color .2s,background .2s;
-    cursor:pointer;
+    font-size:.9rem;color:var(--text-dim);transition:border-color .2s,background .2s;
+    cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.04);
   }
-  .checklist li:hover{border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.03)}
+  .checklist li:hover{border-color:var(--border-hover);background:var(--bg-alt)}
   .checklist li::before{
     content:counter(check);position:absolute;left:1rem;top:50%;transform:translateY(-50%);
-    width:28px;height:28px;border-radius:50%;border:2px solid var(--gold);
+    width:28px;height:28px;border-radius:50%;border:2px solid var(--accent);
     display:flex;align-items:center;justify-content:center;
-    font-size:.75rem;font-weight:700;color:var(--gold);
+    font-size:.75rem;font-weight:700;color:var(--accent);
   }
   .checklist li.checked{opacity:.55;text-decoration:line-through}
-  .checklist li.checked::before{background:var(--gold);color:var(--bg);content:'✓'}
+  .checklist li.checked::before{background:var(--accent);color:#fff;content:'\2713'}
 
   /* ── BEFORE/AFTER ── */
   .ba-card{
-    background:var(--bg-card);border:1px solid rgba(201,168,76,.1);border-radius:var(--radius);
-    padding:1.75rem;margin-bottom:1.25rem;
+    background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
+    padding:1.75rem;margin-bottom:1.25rem;box-shadow:var(--shadow);
   }
-  .ba-card h4{font-size:.9rem;color:var(--gold);margin-bottom:1rem;text-transform:uppercase;letter-spacing:.5px}
+  .ba-card h4{font-size:.9rem;color:var(--accent);margin-bottom:1rem;text-transform:uppercase;letter-spacing:.5px}
   .ba-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
   @media(max-width:600px){.ba-row{grid-template-columns:1fr}}
   .ba-box{border-radius:8px;padding:1rem;font-size:.85rem;line-height:1.7}
-  .ba-box.before{background:rgba(231,76,60,.08);border:1px solid rgba(231,76,60,.2);color:var(--white-dim)}
-  .ba-box.after{background:rgba(78,204,163,.08);border:1px solid rgba(78,204,163,.2);color:var(--white)}
+  .ba-box.before{background:rgba(192,57,43,.06);border:1px solid rgba(192,57,43,.2);color:var(--text-dim)}
+  .ba-box.after{background:rgba(26,138,92,.06);border:1px solid rgba(26,138,92,.2);color:var(--text)}
   .ba-box .label{
     font-size:.65rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.4rem;font-weight:700;
   }
@@ -252,37 +259,182 @@
   .action-list{list-style:none;counter-reset:action}
   .action-list li{
     counter-increment:action;
-    background:var(--bg-card);border:1px solid rgba(201,168,76,.1);border-radius:var(--radius);
+    background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
     padding:1.15rem 1.25rem 1.15rem 4.5rem;margin-bottom:.6rem;position:relative;
-    font-size:.92rem;color:var(--white-dim);transition:border-color .2s;
+    font-size:.92rem;color:var(--text-dim);transition:border-color .2s;
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
   }
-  .action-list li:hover{border-color:rgba(201,168,76,.3)}
+  .action-list li:hover{border-color:var(--border-hover)}
   .action-list li::before{
     content:counter(action,decimal-leading-zero);position:absolute;left:1rem;top:50%;transform:translateY(-50%);
-    font-size:1.4rem;font-weight:800;color:rgba(201,168,76,.2);
+    font-size:1.4rem;font-weight:800;color:rgba(0,0,0,.1);
   }
 
   /* ── FOOTER ── */
   footer{
-    text-align:center;padding:3rem 2rem;color:var(--white-dim);font-size:.8rem;
-    border-top:1px solid rgba(201,168,76,.1);
+    text-align:center;padding:3rem 2rem;color:var(--text-dim);font-size:.8rem;
+    border-top:1px solid var(--border);background:var(--bg);
   }
-  footer span{color:var(--gold)}
+  footer span{color:var(--accent);font-weight:600}
 
   /* ── SCROLL REVEAL ── */
   .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
   .reveal.visible{opacity:1;transform:translateY(0)}
+
+  /* ══════════════════════════════════════════════════
+     LANDING PAGE PREVIEW - Browser Chrome Mockup
+     ══════════════════════════════════════════════════ */
+  .browser-mockup{
+    border:1px solid var(--border);border-radius:12px;overflow:hidden;
+    box-shadow:0 12px 48px rgba(0,0,0,.12);background:#fff;
+    max-width:1100px;margin:0 auto;
+  }
+  .browser-chrome{
+    background:#1a1a1a;padding:.6rem 1rem;display:flex;align-items:center;gap:.75rem;
+  }
+  .browser-dots{display:flex;gap:6px}
+  .browser-dots span{width:12px;height:12px;border-radius:50%}
+  .browser-dots span:nth-child(1){background:#ff5f57}
+  .browser-dots span:nth-child(2){background:#ffbd2e}
+  .browser-dots span:nth-child(3){background:#28c940}
+  .browser-url{
+    flex:1;background:rgba(255,255,255,.1);border-radius:6px;padding:.3rem .8rem;
+    font-size:.75rem;color:rgba(255,255,255,.5);font-family:monospace;
+  }
+  .browser-content{
+    max-height:none;overflow:visible;
+  }
+
+  /* ── Preview internal styles ── */
+  .prev-hero{
+    background:#0a0a0a;color:#fff;padding:4rem 2.5rem;text-align:center;
+    position:relative;overflow:hidden;
+  }
+  .prev-hero::before{
+    content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+    background:radial-gradient(ellipse at 50% 30%,rgba(255,255,255,.04) 0%,transparent 70%);
+  }
+  .prev-hero>*{position:relative}
+  .prev-hero .prev-device-placeholder{
+    width:280px;height:160px;margin:0 auto 2rem;border:2px dashed rgba(255,255,255,.15);
+    border-radius:12px;display:flex;align-items:center;justify-content:center;
+    color:rgba(255,255,255,.25);font-size:.8rem;letter-spacing:1px;text-transform:uppercase;
+  }
+  .prev-hero h2{font-size:clamp(1.4rem,3vw,2.2rem);font-weight:800;line-height:1.2;margin-bottom:.75rem;max-width:700px;margin-left:auto;margin-right:auto}
+  .prev-hero p{color:rgba(255,255,255,.55);font-size:.95rem;margin-bottom:1.5rem}
+  .prev-hero .prev-cta-group{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+  .prev-btn{
+    padding:.65rem 1.5rem;border-radius:6px;font-size:.85rem;font-weight:600;
+    text-decoration:none;display:inline-block;cursor:pointer;border:none;transition:all .2s;
+  }
+  .prev-btn-primary{background:#fff;color:#000}
+  .prev-btn-primary:hover{background:#e5e5e5}
+  .prev-btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3)}
+  .prev-btn-outline:hover{border-color:#fff}
+
+  .prev-section{padding:3rem 2.5rem}
+  .prev-section.prev-grey{background:#f8f8f8}
+  .prev-section h3{font-size:1.3rem;font-weight:700;color:#000;text-align:center;margin-bottom:.4rem}
+  .prev-section .prev-subtitle{text-align:center;color:#666;font-size:.9rem;margin-bottom:2rem}
+
+  .prev-why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+  @media(max-width:700px){.prev-why-grid{grid-template-columns:repeat(2,1fr)}}
+  .prev-why-card{text-align:center;padding:1.25rem 1rem}
+  .prev-why-card .prev-icon{
+    width:48px;height:48px;border-radius:50%;background:#000;color:#fff;
+    display:flex;align-items:center;justify-content:center;margin:0 auto .75rem;
+    font-size:1.1rem;font-weight:700;
+  }
+  .prev-why-card h4{font-size:.85rem;font-weight:700;color:#000;margin-bottom:.3rem}
+  .prev-why-card p{font-size:.78rem;color:#666;line-height:1.5}
+
+  .prev-devices-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+  @media(max-width:700px){.prev-devices-grid{grid-template-columns:repeat(2,1fr)}}
+  .prev-device-card{
+    background:#fff;border:1px solid #e5e5e5;border-radius:10px;overflow:hidden;
+    transition:box-shadow .2s,transform .2s;
+  }
+  .prev-device-card:hover{box-shadow:0 8px 24px rgba(0,0,0,.1);transform:translateY(-2px)}
+  .prev-device-img{
+    height:120px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;
+    color:#999;font-size:.75rem;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #e5e5e5;
+  }
+  .prev-device-card .prev-device-info{padding:1rem}
+  .prev-device-card h4{font-size:.85rem;font-weight:700;color:#000;margin-bottom:.25rem}
+  .prev-device-card p{font-size:.75rem;color:#666;line-height:1.4;margin-bottom:.5rem}
+  .prev-device-card .prev-price{font-size:.75rem;font-weight:700;color:#000;margin-bottom:.6rem}
+  .prev-device-card .prev-btn-sm{
+    display:block;text-align:center;padding:.4rem;background:#000;color:#fff;
+    border-radius:6px;font-size:.75rem;font-weight:600;
+  }
+
+  .prev-story{display:flex;gap:2.5rem;align-items:center}
+  @media(max-width:600px){.prev-story{flex-direction:column}}
+  .prev-story-photo{
+    flex-shrink:0;width:200px;height:220px;background:#e5e5e5;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;color:#999;font-size:.8rem;
+    text-transform:uppercase;letter-spacing:1px;
+  }
+  .prev-story-text h3{font-size:1.1rem;font-weight:700;color:#000;margin-bottom:.5rem;text-align:left}
+  .prev-story-text p{font-size:.85rem;color:#555;line-height:1.6}
+
+  .prev-testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+  @media(max-width:700px){.prev-testimonials{grid-template-columns:1fr}}
+  .prev-testimonial{
+    background:#fff;border:1px solid #e5e5e5;border-radius:10px;padding:1.5rem;
+  }
+  .prev-testimonial .prev-stars{color:#000;font-size:.9rem;margin-bottom:.5rem;letter-spacing:2px}
+  .prev-testimonial p{font-size:.8rem;color:#555;line-height:1.5;font-style:italic;margin-bottom:.75rem}
+  .prev-testimonial .prev-author{font-size:.75rem;font-weight:700;color:#000}
+  .prev-testimonial .prev-clinic{font-size:.7rem;color:#999}
+
+  .prev-roi{
+    max-width:500px;margin:0 auto;background:#fff;border:1px solid #e5e5e5;
+    border-radius:10px;padding:2rem;
+  }
+  .prev-roi h3{text-align:center;margin-bottom:1.5rem}
+  .prev-roi-row{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+  .prev-roi-row label{font-size:.8rem;color:#333;min-width:110px;font-weight:600}
+  .prev-roi-row .prev-select,.prev-roi-row .prev-input{
+    flex:1;padding:.5rem .75rem;border:1px solid #ddd;border-radius:6px;
+    font-size:.8rem;background:#f8f8f8;color:#333;appearance:none;
+    font-family:inherit;
+  }
+  .prev-roi-result{
+    background:#000;color:#fff;border-radius:8px;padding:1.25rem;margin-top:1.5rem;
+    text-align:center;
+  }
+  .prev-roi-result .prev-big-num{font-size:1.8rem;font-weight:800;margin-bottom:.2rem}
+  .prev-roi-result p{font-size:.8rem;color:rgba(255,255,255,.6)}
+
+  .prev-cta-section{
+    background:#000;color:#fff;padding:3rem 2.5rem;text-align:center;
+  }
+  .prev-cta-section h3{font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:.5rem}
+  .prev-cta-section p{color:rgba(255,255,255,.55);font-size:.9rem;margin-bottom:1.5rem}
+  .prev-form-row{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;max-width:600px;margin:0 auto}
+  .prev-form-input{
+    padding:.55rem 1rem;border:1px solid rgba(255,255,255,.2);border-radius:6px;
+    background:rgba(255,255,255,.08);color:#fff;font-size:.85rem;flex:1;min-width:160px;
+    font-family:inherit;
+  }
+  .prev-form-input::placeholder{color:rgba(255,255,255,.35)}
+  .prev-form-btn{
+    padding:.55rem 1.5rem;background:#fff;color:#000;border:none;border-radius:6px;
+    font-size:.85rem;font-weight:700;cursor:pointer;
+  }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <div class="logo">LEONIDAS MEDITECH</div>
+  <div class="logo">Leonidas Meditech</div>
   <ul>
     <li><a href="#summary">Summary</a></li>
     <li><a href="#ads">Ad Copy</a></li>
     <li><a href="#landing">Landing Pages</a></li>
+    <li><a href="#preview">Preview</a></li>
     <li><a href="#sequence">SMS/Email</a></li>
     <li><a href="#calendar">Calendar</a></li>
     <li><a href="#website">Website Fixes</a></li>
@@ -300,6 +452,7 @@
     <a href="#summary">Executive Summary</a>
     <a href="#ads">10 Ads</a>
     <a href="#landing">Landing Pages</a>
+    <a href="#preview">Site Preview</a>
     <a href="#sequence">8 Touchpoints</a>
     <a href="#calendar">Content Calendar</a>
     <a href="#website">Website Fixes</a>
@@ -319,34 +472,34 @@
       <div class="num">01</div>
       <h3>Campaign 1: Awareness</h3>
       <div class="meta">
-        <span>$30–50/day</span>
+        <span>$30-50/day</span>
         <span>Video Views / Reach</span>
       </div>
       <p><strong>Audience:</strong> AU beauty professionals, clinic owners, aestheticians</p>
       <p style="margin-top:.5rem">Three ads (brand story, price disruption, device showcase) designed to build recognition and establish Mohammed as the face of the brand. Video-first creative that positions Leonidas as the direct-from-Korea alternative.</p>
-      <p style="margin-top:.5rem;font-size:.8rem;color:var(--gold)">3 Ads &bull; Video &amp; Carousel</p>
+      <p style="margin-top:.5rem;font-size:.8rem;color:var(--accent)">3 Ads &bull; Video &amp; Carousel</p>
     </div>
     <div class="campaign-card">
       <div class="num">02</div>
       <h3>Campaign 2: Lead Generation</h3>
       <div class="meta">
-        <span>$40–60/day</span>
+        <span>$40-60/day</span>
         <span>Lead Forms</span>
       </div>
       <p><strong>Audience:</strong> Retarget video viewers + cold beauty professionals</p>
       <p style="margin-top:.5rem">Four device-specific ads (Picosecond, CO2 Fractional, EMS, LED) each with ROI messaging and clear CTAs. Drives to Meta lead forms for direct enquiry capture.</p>
-      <p style="margin-top:.5rem;font-size:.8rem;color:var(--gold)">4 Ads &bull; Device-Specific</p>
+      <p style="margin-top:.5rem;font-size:.8rem;color:var(--accent)">4 Ads &bull; Device-Specific</p>
     </div>
     <div class="campaign-card">
       <div class="num">03</div>
       <h3>Campaign 3: Retargeting</h3>
       <div class="meta">
-        <span>$20–30/day</span>
+        <span>$20-30/day</span>
         <span>Conversions</span>
       </div>
       <p><strong>Audience:</strong> Website visitors, lead form openers, 50%+ video viewers</p>
       <p style="margin-top:.5rem">Three conversion-focused ads (testimonial/social proof, support &amp; service, leasing/finance) to close warm leads who need one more push. Trust-building creative.</p>
-      <p style="margin-top:.5rem;font-size:.8rem;color:var(--gold)">3 Ads &bull; Trust &amp; Conversion</p>
+      <p style="margin-top:.5rem;font-size:.8rem;color:var(--accent)">3 Ads &bull; Trust &amp; Conversion</p>
     </div>
   </div>
 </section>
@@ -354,6 +507,7 @@
 <div class="divider"></div>
 
 <!-- ════════════════════ AD COPY ════════════════════ -->
+<div style="background:var(--bg-alt)">
 <section id="ads">
   <div class="reveal">
     <span class="section-tag">Section 02</span>
@@ -363,12 +517,12 @@
 
   <!-- Campaign 1 -->
   <div class="campaign-group reveal">
-    <div class="campaign-group-title">Campaign 1: Awareness — Video Views / Reach</div>
+    <div class="campaign-group-title">Campaign 1: Awareness - Video Views / Reach</div>
 
     <div class="accordion-item">
-      <div class="accordion-header">Ad 1.1: Brand Story — Mohammed On Camera (45–60 sec) <span class="arrow">▼</span></div>
+      <div class="accordion-header">Ad 1.1: Brand Story - Mohammed On Camera (45-60 sec) <span class="arrow">&#9660;</span></div>
       <div class="accordion-body">
-        <div class="ad-meta"><span>Video</span><span>45–60 sec</span><span>Awareness</span></div>
+        <div class="ad-meta"><span>Video</span><span>45-60 sec</span><span>Awareness</span></div>
         <div class="hook">"Australian clinics are paying 2-3 times too much for their devices."</div>
         <h4>Script</h4>
         <p>"I'm Mohammed from Leonidas Meditech. After 10 years in this industry, I got tired of watching clinic owners get overcharged for the same technology.</p>
@@ -381,7 +535,7 @@
     </div>
 
     <div class="accordion-item">
-      <div class="accordion-header">Ad 1.2: Price Disruption — Video/Carousel (30 sec) <span class="arrow">▼</span></div>
+      <div class="accordion-header">Ad 1.2: Price Disruption - Video/Carousel (30 sec) <span class="arrow">&#9660;</span></div>
       <div class="accordion-body">
         <div class="ad-meta"><span>Video / Carousel</span><span>30 sec</span><span>Awareness</span></div>
         <div class="hook">"Why are you still paying premium prices for devices made in the same Korean factories?"</div>
@@ -402,9 +556,9 @@
     </div>
 
     <div class="accordion-item">
-      <div class="accordion-header">Ad 1.3: Device Showcase — Quick Cuts (20–30 sec) <span class="arrow">▼</span></div>
+      <div class="accordion-header">Ad 1.3: Device Showcase - Quick Cuts (20-30 sec) <span class="arrow">&#9660;</span></div>
       <div class="accordion-body">
-        <div class="ad-meta"><span>Video</span><span>20–30 sec</span><span>Awareness</span></div>
+        <div class="ad-meta"><span>Video</span><span>20-30 sec</span><span>Awareness</span></div>
         <div class="hook">"11 devices. One supplier. Zero markup."</div>
         <h4>Script (text overlays on device footage)</h4>
         <p>[Shot: Picosecond firing] "Picosecond laser. Tattoo removal, pigmentation, skin rejuvenation."</p>
@@ -420,12 +574,12 @@
 
   <!-- Campaign 2 -->
   <div class="campaign-group reveal">
-    <div class="campaign-group-title">Campaign 2: Lead Generation — Device-Specific</div>
+    <div class="campaign-group-title">Campaign 2: Lead Generation - Device-Specific</div>
 
     <div class="accordion-item">
-      <div class="accordion-header">Ad 2.1: Picosecond Laser <span class="arrow">▼</span></div>
+      <div class="accordion-header">Ad 2.1: Picosecond Laser <span class="arrow">&#9660;</span></div>
       <div class="accordion-body">
-        <div class="ad-meta"><span>Lead Gen</span><span>Picosecond</span><span>$40–60/day</span></div>
+        <div class="ad-meta"><span>Lead Gen</span><span>Picosecond</span><span>$40-60/day</span></div>
         <div class="hook">The Most Powerful Picosecond Device We've Ever Built. Now Available In Australia.</div>
         <h4>Body</h4>
         <p>The Leonidas PicoTech PRO PLUS shatters all coloured inks with precision that competitors can't match.</p>
@@ -446,9 +600,9 @@
     </div>
 
     <div class="accordion-item">
-      <div class="accordion-header">Ad 2.2: CO2 Fractional Laser <span class="arrow">▼</span></div>
+      <div class="accordion-header">Ad 2.2: CO2 Fractional Laser <span class="arrow">&#9660;</span></div>
       <div class="accordion-body">
-        <div class="ad-meta"><span>Lead Gen</span><span>CO2 Fractional</span><span>$40–60/day</span></div>
+        <div class="ad-meta"><span>Lead Gen</span><span>CO2 Fractional</span><span>$40-60/day</span></div>
         <div class="hook">CO2 Fractional Is The Gold Standard In Skin Rejuvenation. Now Affordable For Every Clinic.</div>
         <h4>Body</h4>
         <p>Your clients are asking for it. CO2 Fractional delivers results that no facial or serum can match.</p>
@@ -467,9 +621,9 @@
     </div>
 
     <div class="accordion-item">
-      <div class="accordion-header">Ad 2.3: EMS Body Sculpting <span class="arrow">▼</span></div>
+      <div class="accordion-header">Ad 2.3: EMS Body Sculpting <span class="arrow">&#9660;</span></div>
       <div class="accordion-body">
-        <div class="ad-meta"><span>Lead Gen</span><span>EMS</span><span>$40–60/day</span></div>
+        <div class="ad-meta"><span>Lead Gen</span><span>EMS</span><span>$40-60/day</span></div>
         <div class="hook">EMS Body Sculpting Is The Fastest Growing Treatment In Australian Clinics. Here's Why.</div>
         <h4>Body</h4>
         <p>Your clients want body contouring without surgery. EMS delivers visible results in sessions, not months.</p>
@@ -488,7 +642,7 @@
     </div>
 
     <div class="accordion-item">
-      <div class="accordion-header">Ad 2.4: LED Rejuvenation (Entry-Level) <span class="arrow">▼</span></div>
+      <div class="accordion-header">Ad 2.4: LED Rejuvenation (Entry-Level) <span class="arrow">&#9660;</span></div>
       <div class="accordion-body">
         <div class="ad-meta"><span>Lead Gen</span><span>LED</span><span>Entry-Level</span></div>
         <div class="hook">Start With LED. Low Cost. High Demand. Zero Downtime.</div>
@@ -510,16 +664,16 @@
 
   <!-- Campaign 3 -->
   <div class="campaign-group reveal">
-    <div class="campaign-group-title">Campaign 3: Retargeting — Conversion</div>
+    <div class="campaign-group-title">Campaign 3: Retargeting - Conversion</div>
 
     <div class="accordion-item">
-      <div class="accordion-header">Ad 3.1: Testimonial / Social Proof <span class="arrow">▼</span></div>
+      <div class="accordion-header">Ad 3.1: Testimonial / Social Proof <span class="arrow">&#9660;</span></div>
       <div class="accordion-body">
-        <div class="ad-meta"><span>Retargeting</span><span>Social Proof</span><span>$20–30/day</span></div>
+        <div class="ad-meta"><span>Retargeting</span><span>Social Proof</span><span>$20-30/day</span></div>
         <div class="hook">"I Wish I'd Found Leonidas Sooner." See What Clinic Owners Are Saying.</div>
         <h4>Body</h4>
-        <p>[Placeholder — needs real testimonial]</p>
-        <p>"We were quoted $XX,000 from another supplier for the same spec device. Leonidas came in at half the price, included training, and their support team actually picks up the phone. The device has been running flawlessly for 6 months."<br>— [Clinic Owner Name], [Clinic Name], [Location]</p>
+        <p>[Placeholder - needs real testimonial]</p>
+        <p>"We were quoted $XX,000 from another supplier for the same spec device. Leonidas came in at half the price, included training, and their support team actually picks up the phone. The device has been running flawlessly for 6 months."<br>- [Clinic Owner Name], [Clinic Name], [Location]</p>
         <p>If you're comparing devices, talk to us before you sign anything.</p>
         <p>We'll show you the specs side-by-side. No pressure. Just transparency.</p>
         <div class="cta-line"><strong>CTA:</strong> Book A Free Consultation &nbsp;|&nbsp; <strong>Alt Headline:</strong> Don't Overpay For Your Next Device. Compare First.</div>
@@ -527,9 +681,9 @@
     </div>
 
     <div class="accordion-item">
-      <div class="accordion-header">Ad 3.2: Support & Service <span class="arrow">▼</span></div>
+      <div class="accordion-header">Ad 3.2: Support & Service <span class="arrow">&#9660;</span></div>
       <div class="accordion-body">
-        <div class="ad-meta"><span>Retargeting</span><span>Trust-Building</span><span>$20–30/day</span></div>
+        <div class="ad-meta"><span>Retargeting</span><span>Trust-Building</span><span>$20-30/day</span></div>
         <div class="hook">Still Researching? Here's What Real Support Looks Like.</div>
         <h4>Body</h4>
         <p>Buying a device is the easy part. What happens after is what matters.</p>
@@ -548,9 +702,9 @@
     </div>
 
     <div class="accordion-item">
-      <div class="accordion-header">Ad 3.3: Leasing / Finance <span class="arrow">▼</span></div>
+      <div class="accordion-header">Ad 3.3: Leasing / Finance <span class="arrow">&#9660;</span></div>
       <div class="accordion-body">
-        <div class="ad-meta"><span>Retargeting</span><span>Finance</span><span>$20–30/day</span></div>
+        <div class="ad-meta"><span>Retargeting</span><span>Finance</span><span>$20-30/day</span></div>
         <div class="hook">From $X Per Week. Your New Device Pays For Itself In Weeks, Not Months.</div>
         <h4>Body</h4>
         <p>Worried about the upfront cost? Don't be.</p>
@@ -572,6 +726,7 @@
     </div>
   </div>
 </section>
+</div>
 
 <div class="divider"></div>
 
@@ -644,6 +799,189 @@
     </ul>
   </div>
 </section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════ LANDING PAGE PREVIEW ════════════════════ -->
+<div style="background:var(--bg-alt)">
+<section id="preview">
+  <div class="reveal">
+    <span class="section-tag">Section 03b</span>
+    <h2 class="section-title">Landing Page Preview</h2>
+    <p class="section-sub">A rendered mockup of what the redesigned leonidasmeditech.com homepage could look like. This is the copy and layout from Section 03 brought to life.</p>
+  </div>
+
+  <div class="browser-mockup reveal">
+    <!-- Browser Chrome -->
+    <div class="browser-chrome">
+      <div class="browser-dots"><span></span><span></span><span></span></div>
+      <div class="browser-url">https://leonidasmeditech.com</div>
+    </div>
+
+    <!-- Browser Content -->
+    <div class="browser-content">
+
+      <!-- PREVIEW: Hero -->
+      <div class="prev-hero">
+        <div class="prev-device-placeholder">Device Imagery</div>
+        <h2>Professional-Grade Aesthetic Devices.<br>Korean Engineered. Priced For Australian Clinics.</h2>
+        <p>11 devices. Full training. 7-day support. Qualified service engineers. Leasing available.</p>
+        <div class="prev-cta-group">
+          <span class="prev-btn prev-btn-primary">See Our Devices</span>
+          <span class="prev-btn prev-btn-outline">Book A Free Consultation</span>
+        </div>
+      </div>
+
+      <!-- PREVIEW: Why Leonidas -->
+      <div class="prev-section prev-grey">
+        <h3>Why Australian Clinics Are Switching To Leonidas</h3>
+        <p class="prev-subtitle">Direct access to the same technology. Without the markup.</p>
+        <div class="prev-why-grid">
+          <div class="prev-why-card">
+            <div class="prev-icon">&#9992;</div>
+            <h4>Direct From Korea</h4>
+            <p>We source directly from top Korean manufacturers. No middlemen, no inflated pricing. Same technology, without the brand tax.</p>
+          </div>
+          <div class="prev-why-card">
+            <div class="prev-icon">&#9998;</div>
+            <h4>Training Included</h4>
+            <p>Every device comes with hands-on training and certification for your team. We don't just drop off a machine and leave.</p>
+          </div>
+          <div class="prev-why-card">
+            <div class="prev-icon">&#9742;</div>
+            <h4>7-Day Support</h4>
+            <p>Our customer service team is available 7 days a week. Qualified service engineers, not call centres.</p>
+          </div>
+          <div class="prev-why-card">
+            <div class="prev-icon">$</div>
+            <h4>Leasing That Works</h4>
+            <p>Flexible leasing designed around clinic cash flow. Your device starts earning before your first payment is due.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PREVIEW: Featured Devices -->
+      <div class="prev-section">
+        <h3>Featured Devices</h3>
+        <p class="prev-subtitle">Professional-grade technology for every treatment room.</p>
+        <div class="prev-devices-grid">
+          <div class="prev-device-card">
+            <div class="prev-device-img">Picosecond Laser</div>
+            <div class="prev-device-info">
+              <h4>Picosecond Laser</h4>
+              <p>Tattoo removal, pigmentation, melasma, skin rejuvenation. Multiple wavelengths. Multiple revenue streams.</p>
+              <div class="prev-price">Avg session: $300-500</div>
+              <span class="prev-btn-sm">Enquire</span>
+            </div>
+          </div>
+          <div class="prev-device-card">
+            <div class="prev-device-img">CO2 Fractional</div>
+            <div class="prev-device-info">
+              <h4>CO2 Fractional Laser</h4>
+              <p>The gold standard in skin rejuvenation. Fine lines, acne scarring, uneven texture, sun damage.</p>
+              <div class="prev-price">Avg session: $300-800</div>
+              <span class="prev-btn-sm">Enquire</span>
+            </div>
+          </div>
+          <div class="prev-device-card">
+            <div class="prev-device-img">EMS Body Sculpting</div>
+            <div class="prev-device-info">
+              <h4>EMS Body Sculpting</h4>
+              <p>Non-invasive body contouring. The fastest-growing treatment in Australian clinics. 30 min sessions.</p>
+              <div class="prev-price">Avg session: $200-400</div>
+              <span class="prev-btn-sm">Enquire</span>
+            </div>
+          </div>
+          <div class="prev-device-card">
+            <div class="prev-device-img">LED Rejuvenation</div>
+            <div class="prev-device-info">
+              <h4>LED Rejuvenation</h4>
+              <p>Zero downtime, high demand. Multiple wavelengths for rejuvenation, acne, and anti-inflammatory treatment.</p>
+              <div class="prev-price">Avg session: $80-150</div>
+              <span class="prev-btn-sm">Enquire</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PREVIEW: Mohammed's Story -->
+      <div class="prev-section prev-grey">
+        <div class="prev-story">
+          <div class="prev-story-photo">Photo</div>
+          <div class="prev-story-text">
+            <h3>"I flew to Korea because Australian clinics deserve better."</h3>
+            <p>After a decade in the Australian beauty industry, Mohammed saw the same problem everywhere: clinics paying premium prices for devices made in the same Korean factories.</p>
+            <p style="margin-top:.5rem">So he flew to Korea, met the manufacturers directly, and built Leonidas Meditech to give Australian clinics access to the same technology without the markup. Every device, every clinic, every day.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PREVIEW: Social Proof -->
+      <div class="prev-section">
+        <h3>Trusted By Clinics Across Australia</h3>
+        <p class="prev-subtitle">See what clinic owners are saying about Leonidas Meditech.</p>
+        <div class="prev-testimonials">
+          <div class="prev-testimonial">
+            <div class="prev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>"We were quoted $XX,000 from another supplier. Leonidas came in at half the price, included training, and their support team actually picks up the phone."</p>
+            <div class="prev-author">[Clinic Owner Name]</div>
+            <div class="prev-clinic">[Clinic Name], Sydney</div>
+          </div>
+          <div class="prev-testimonial">
+            <div class="prev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>"The device has been running flawlessly. Their service engineer was at our clinic within 24 hours when we needed a calibration check. That's unheard of."</p>
+            <div class="prev-author">[Clinic Owner Name]</div>
+            <div class="prev-clinic">[Clinic Name], Melbourne</div>
+          </div>
+          <div class="prev-testimonial">
+            <div class="prev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>"I wish I'd found Leonidas sooner. We're now offering three new treatments and the devices paid for themselves in under two months."</p>
+            <div class="prev-author">[Clinic Owner Name]</div>
+            <div class="prev-clinic">[Clinic Name], Brisbane</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PREVIEW: ROI Calculator -->
+      <div class="prev-section prev-grey">
+        <div class="prev-roi">
+          <h3>How Much Could This Device Earn Your Clinic?</h3>
+          <div class="prev-roi-row">
+            <label>Device</label>
+            <div class="prev-select" style="cursor:default">Picosecond Laser</div>
+          </div>
+          <div class="prev-roi-row">
+            <label>Sessions/Week</label>
+            <div class="prev-input" style="cursor:default">15</div>
+          </div>
+          <div class="prev-roi-row">
+            <label>Avg Price</label>
+            <div class="prev-input" style="cursor:default">$350</div>
+          </div>
+          <div class="prev-roi-result">
+            <div class="prev-big-num">$22,750/month</div>
+            <p>Estimated monthly revenue &bull; Payback period: ~6 weeks</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PREVIEW: Contact CTA -->
+      <div class="prev-cta-section">
+        <h3>Ready To Equip Your Clinic?</h3>
+        <p>Book a free consultation. No pressure, no obligation. Just transparency.</p>
+        <div class="prev-form-row">
+          <input type="text" class="prev-form-input" placeholder="Your name" disabled>
+          <input type="text" class="prev-form-input" placeholder="Clinic name" disabled>
+          <input type="text" class="prev-form-input" placeholder="Email" disabled>
+          <input type="text" class="prev-form-input" placeholder="Phone" disabled>
+          <span class="prev-form-btn">Book Consultation</span>
+        </div>
+      </div>
+
+    </div><!-- /browser-content -->
+  </div><!-- /browser-mockup -->
+</section>
+</div>
 
 <div class="divider"></div>
 
@@ -773,7 +1111,7 @@ Leonidas Meditech</div>
     <div class="timeline-item email">
       <div class="day-badge">Day 14</div>
       <span class="type-badge">Email</span>
-      <h4>Email 4: Final Push — Social Proof</h4>
+      <h4>Email 4: Final Push - Social Proof</h4>
       <div class="content">Subject: Clinic owners are switching to Leonidas. Here's why.
 
 Hey {{contact.first_name}},
@@ -798,6 +1136,7 @@ Leonidas Meditech</div>
 <div class="divider"></div>
 
 <!-- ════════════════════ CONTENT CALENDAR ════════════════════ -->
+<div style="background:var(--bg-alt)">
 <section id="calendar">
   <div class="reveal">
     <span class="section-tag">Section 05</span>
@@ -889,6 +1228,7 @@ Leonidas Meditech</div>
     </div>
   </div>
 </section>
+</div>
 
 <div class="divider"></div>
 
@@ -902,13 +1242,13 @@ Leonidas Meditech</div>
 
   <ul class="checklist reveal">
     <li>Fix homepage hero image (currently not loading properly)</li>
-    <li>Remove $0.00 pricing from all products — replace with "Enquire for clinic pricing"</li>
+    <li>Remove $0.00 pricing from all products - replace with "Enquire for clinic pricing"</li>
     <li>Rewrite homepage copy using the new tagline and value proposition</li>
     <li>Add technical specifications to every device page (wavelengths, power, dimensions, weight, warranty)</li>
-    <li>Add ROI messaging to each device page — "Average session price: $X. At Y sessions/week, this device generates $Z/month."</li>
+    <li>Add ROI messaging to each device page - "Average session price: $X. At Y sessions/week, this device generates $Z/month."</li>
     <li>Build Mohammed's personal story section on the homepage to build trust and differentiation</li>
-    <li>Add social proof section — testimonial cards and clinic logos (collect 3-5 quotes)</li>
-    <li>Build an interactive ROI calculator — input: device type, sessions/week, session price → output: weekly/monthly/annual revenue</li>
+    <li>Add social proof section - testimonial cards and clinic logos (collect 3-5 quotes)</li>
+    <li>Build an interactive ROI calculator - input: device type, sessions/week, session price; output: weekly/monthly/annual revenue</li>
     <li>Create individual landing pages for each device using the template (hero, treatments, specs, ROI, FAQ, CTA form)</li>
     <li>Install Meta Pixel for tracking and retargeting audience building</li>
   </ul>
@@ -917,6 +1257,7 @@ Leonidas Meditech</div>
 <div class="divider"></div>
 
 <!-- ════════════════════ COPYWRITING FIXES ════════════════════ -->
+<div style="background:var(--bg-alt)">
 <section id="copywriting">
   <div class="reveal">
     <span class="section-tag">Section 07</span>
@@ -953,7 +1294,7 @@ Leonidas Meditech</div>
   </div>
 
   <div class="ba-card reveal">
-    <h4>About Page — Mohammed Section</h4>
+    <h4>About Page - Mohammed Section</h4>
     <div class="ba-row">
       <div class="ba-box before">
         <div class="label">Before</div>
@@ -966,6 +1307,7 @@ Leonidas Meditech</div>
     </div>
   </div>
 </section>
+</div>
 
 <div class="divider"></div>
 
